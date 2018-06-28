@@ -1,5 +1,5 @@
 const evil = ['facebook.com', 'vk.com', 'instagram.com'];
-const good = ['stepik.org', 'stackoverflow.com', 'github.com'];
+const good = ['stepik.org', 'hyperskill.org', 'stackoverflow.com', 'github.com'];
 
 function getData(callback) {
     chrome.storage.local.get('hosts', function (result) {
