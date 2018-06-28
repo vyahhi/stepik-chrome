@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="popup.css"/>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="utils.js"></script>
+<script src="popup.js"></script>
+
+<div style="min-width: 200px;">
+
+    <h4>Learn MOAR</h4>
+
+    <label><input type="checkbox" id="toggleWork"> Turn on your inner voice</label>
+    <span style="color: grey">(counts time spent in ALL tabs including inactive ones)</span>
+
+    <br><br>
+
+    Active: <span id="workSince"></span>
+
+    <br><br>
+
+    <div id="progressBar">
+        <div id="goodBar" title="Good sites time"></div>
+        <div id="evilBar" title="Evil sites time"></div>
+    </div>
+
+    <br>
+
+    <ul id="goodDataHere"></ul>
+    <ul id="evilDataHere"></ul>
+    <ul id="neutralDataHere"></ul>
+
+    <br>
+
+    <a href="#" id="clearData">Clear data</a>
+
+    <br><br>
+
+    <a href="https://stepik.org" target="_blank">Open Stepik</a>
+
+</div>

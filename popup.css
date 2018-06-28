@@ -1,0 +1,44 @@
+ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+li {
+    white-space: nowrap;
+}
+
+#goodDataHere > li {
+    color: green;
+    font-weight: bold;
+}
+
+#evilDataHere > li {
+    color: red;
+    font-weight: bold;
+}
+
+#neutralDataHere > li {
+    color: grey;
+}
+
+#goodBar {
+    background-color: lightgreen;
+}
+
+#evilBar {
+    background-color: red;
+}
+
+#progressBar {
+    background-color: grey;
+    height: 26px;
+}
+
+#goodBar, #evilBar {
+    float: right;
+    height: 26px;
+    text-align: center;
+    line-height: 13px;
+    font-size: 10px;
+
+}

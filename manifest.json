@@ -1,0 +1,34 @@
+{
+  "name": "Stepik",
+  "description": "Learn MOAR!",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "icons": {
+    "300": "icon.png"
+  },
+  "background": {
+    "scripts": [
+      "utils.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_title": "Stepik",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "<all_urls>",
+    "notifications",
+    "storage"
+  ]
+}
