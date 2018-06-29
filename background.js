@@ -22,6 +22,10 @@ function sendNotification(progress) {
 }
 
 (function backgroundTask() {
-    getData(backgroundCallback);
+    chrome.storage.local.get('work', function (result) {
+        if (result.work) {
+            getData(backgroundCallback);
+        }
+    }
     setTimeout(backgroundTask, 1000);
 })();

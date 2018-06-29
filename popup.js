@@ -39,19 +39,19 @@ function drawCallback(data) {
 
 
     var total_sec = data.good_sec + data.evil_sec;
-    var good_percent = Math.round(data.good_sec / total_sec * 100);
-    var evil_percent = Math.round(data.evil_sec / total_sec * 100);
+    var good_percent = data.good_sec / total_sec * 100;
+    var evil_percent = data.evil_sec / total_sec * 100;
 
     var good_bar_msg = '';
     if (good_percent > 10) {
-        good_bar_msg += good_percent + '%';
+        good_bar_msg += Math.round(good_percent) + '%';
     }
     if (good_percent > 20) {
         good_bar_msg += '<br>' + displayTime(data.good_sec);
     }
     var evil_bar_msg = '';
     if (evil_percent > 10) {
-        evil_bar_msg += evil_percent + '%';
+        evil_bar_msg += Math.round(evil_percent) + '%';
     }
     if (evil_percent > 20) {
         evil_bar_msg += '<br>' + displayTime(data.evil_sec);
