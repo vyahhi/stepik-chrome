@@ -26,6 +26,6 @@ function sendNotification(progress) {
         if (result.work) {
             getData(backgroundCallback);
         }
-    }
+    });
     setTimeout(backgroundTask, 1000);
 })();
