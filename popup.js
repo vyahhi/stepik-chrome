@@ -14,30 +14,29 @@ function clearData() {
 
 function drawWorkSince() {
     chrome.storage.local.get('work_since', function (result) {
-        var seconds = Math.round((new Date().getTime() - result.work_since) / 1000) + ' seconds';
+        const seconds =  Math.round((new Date().getTime() - result.work_since) / 1000);
         chrome.storage.local.get('work', function (result) {
-            $('#workSince').html(result.work ? seconds : 'OFF');
+            $('#workSince').html(result.work ? displayTime(seconds) : 'OFF');
         });
     });
 }
 
 function drawCallback(data) {
-    $('#goodDataHere').empty();
-    $('#evilDataHere').empty();
-    $('#neutralDataHere').empty();
+    const map = [
+        [data.good, $('#goodDataHere')],
+        [data.evil, $('#evilDataHere')],
+        [data.neutral, $('#neutralDataHere')],
+    ];
 
-    for (var hostname in data.good) {
-        var li = '<li>' + hostname + ': ' + data.good[hostname] + ' sec' + '</li>';
-        $('#goodDataHere').append(li);
+    for (var i = 0; i < map.length; i++) {
+        container = map[i][1];
+        container.empty();
+        for (var j = 0; j < map[i][0].length; j++) {
+            var li = '<li>' + map[i][0][j][1] + ': ' + displayTime(map[i][0][j][0]) + '</li>';
+            container.append(li);
+        }
     }
-    for (var hostname in data.evil) {
-        var li = '<li>' + hostname + ': ' + data.evil[hostname] + ' sec' + '</li>';
-        $('#evilDataHere').append(li);
-    }
-    for (var hostname in data.neutral) {
-        var li = '<li>' + hostname + ': ' + data.neutral[hostname] + ' sec' + '</li>';
-        $('#neutralDataHere').append(li);
-    }
+
 
     var total_sec = data.good_sec + data.evil_sec;
     var good_percent = Math.round(data.good_sec / total_sec * 100);
@@ -48,14 +47,14 @@ function drawCallback(data) {
         good_bar_msg += good_percent + '%';
     }
     if (good_percent > 20) {
-        good_bar_msg += '<br>' + data.good_sec + ' sec'
+        good_bar_msg += '<br>' + displayTime(data.good_sec);
     }
     var evil_bar_msg = '';
     if (evil_percent > 10) {
         evil_bar_msg += evil_percent + '%';
     }
     if (evil_percent > 20) {
-        evil_bar_msg += '<br>' + data.evil_sec + ' sec';
+        evil_bar_msg += '<br>' + displayTime(data.evil_sec);
     }
 
     $('#goodBar').css('width', good_percent + '%').html(good_bar_msg);
