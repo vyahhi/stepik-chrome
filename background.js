@@ -8,6 +8,9 @@ function backgroundCallback(data) {
         chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 255]});
         sendNotification();
     }
+    else {
+        chrome.browserAction.setBadgeText( { text: '' } );
+    }
 }
 
 function sendNotification(progress) {
